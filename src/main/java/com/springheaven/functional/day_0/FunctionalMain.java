@@ -3,6 +3,7 @@ package com.springheaven.functional.day_0;
 
 import org.slf4j.LoggerFactory;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
@@ -23,6 +24,8 @@ public class FunctionalMain {
         Function<Integer, Integer> addBy1AndThenMultiplyBy10 = incrementByOneFunction.andThen(multiplyByTen);
         Integer in = addBy1AndThenMultiplyBy10.apply(4);
         System.out.println(in);
+        System.out.println("Doing Bifucntion Operation"+incrementByOneMultiplyBy10.apply(4,100));
+
 
     }
 
@@ -34,9 +37,10 @@ public class FunctionalMain {
     static Function<Integer,Integer> incrementByOneFunction= number -> number + 1;
 
     //this function we are trying to chain the above increment to mulitply
-    static Function<Integer,Integer>  multiplyByTen= number -> number * 10;
+    static Function<Integer,Integer>  multiplyByTen= number -> (number+1) * 10;
 
-
+    //instead of writing one function for addition and another one for multiplication we can use the Bi_function
+    static BiFunction<Integer,Integer,Integer> incrementByOneMultiplyBy10= (number,numberMultiply) -> (number+1)*numberMultiply;
 
 
 }
